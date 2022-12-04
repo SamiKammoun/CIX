@@ -7,8 +7,13 @@
 const hre = require("hardhat");
 
 async function main() {
+  const [deployer] = await ethers.getSigners();
+
+  console.log("Deploying contracts with the account:", deployer.address);
+  console.log("Account balance:", (await deployer.getBalance()).toString());
+
   const CIX = await hre.ethers.getContractFactory("CIX");
-  const cix = await CIX.deploy();
+  const cix = await CIX.deploy(deployer.address, deployer.address, deployer.address);
 
   await cix.deployed();
 
