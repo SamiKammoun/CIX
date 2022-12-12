@@ -13,7 +13,11 @@ async function main() {
   console.log("Account balance:", (await deployer.getBalance()).toString());
 
   const CIX = await hre.ethers.getContractFactory("CIX");
-  const cix = await CIX.deploy(deployer.address, deployer.address, deployer.address);
+  const cix = await CIX.deploy(
+    "0x3aaE94c45CA9B9020bC405Bc1a4D76aB9Bf1908F",
+    "0x3aaE94c45CA9B9020bC405Bc1a4D76aB9Bf1908F",
+    "0x3aaE94c45CA9B9020bC405Bc1a4D76aB9Bf1908F"
+  );
 
   await cix.deployed();
 
